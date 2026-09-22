@@ -1,15 +1,19 @@
-function zipList<T, U>(list1: T[], list2: U[]): [T, U][] {
-  const zipped: [T, U][] = [];
+function zipList(list1: unknown[], list2: unknown[]): unknown[] {
+  const zipped: unknown[] = [];
   const minLength = Math.min(list1.length, list2.length);
 
   for (let i = 0; i < minLength; i++) {
-    zipped.push([list1[i], list2[i]]);
+    zipped.push(list1[i], list2[i]);
   }
   return zipped;
 }
 
-function zipListTheFunctionalWay<T, U>(list1: T[], list2: U[]): [T, U][] {
-  return list1.map((item, index) => [item, list2[index]]);
+function zipListTheFunctionalWay(list1: unknown[], list2: unknown[]): unknown[] {
+  const zipped: unknown[] = [];
+  list1.forEach((element, index) => {
+    zipped.push(element, list2[index]);
+  });
+  return zipped;
 }
 
 console.log(zipList(['a', 'b', 'c'], [1, 2, 3]));
